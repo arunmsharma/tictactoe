@@ -1,11 +1,13 @@
-import React from "react";
+import React from 'react';
+import Board from './components/Board';
 
-const App = ()=>{
+const App = () => {
   return (
-  <div>
-    <h1>TIC TAC TOE</h1>
-  </div>
-  )
-}
+    <div>
+      <h1>TIC TAC TOE</h1>
+      <Board />
+    </div>
+  );
+};
 
-export default App; 
+export default App;
