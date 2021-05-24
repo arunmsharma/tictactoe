@@ -1,6 +1,10 @@
 import React from 'react';
 import Square from './Square';
 
+
+/* Component props are custom attributes that can be passed to a component and accessed inside the component. They look like html attributes, but they are custom-defined.
+*/
+
 // react hooks are just the functions which are exported from the official react package and they allow us to manipulate componenets in a different manner.
 // A Hook is a special function that lets you “hook into” React features. For example, useState is a Hook that lets you add React state to function components.
 // useState is a hook , all hooks start with use keyword 
