@@ -23,7 +23,7 @@ there are basically three stages for component lifecycle.
 */
 
 // board has two props incoming from App (its parent)
-const Board = ({board,handleSquareClick}) => {
+const Board = ({board,handleSquareClick,winningSquare}) => {
 
   /* Moved to App.js for state sharing events */
   // const [board,setBoard] = useState(Array(9).fill(null));
@@ -72,9 +72,11 @@ const Board = ({board,handleSquareClick}) => {
   // it is a callback function that returns the Square component
   const renderSquare = (position) =>{
 
+    const isWinningSquare = winningSquare.includes(position);
+
     // here we add onClick event handler and it takes a valid JSX syntax 
     // here we are giving it a callback function which handles the clicking event 
-    return <Square value = {board[position]} onClick = { () => handleSquareClick(position)}/>
+    return <Square value = {board[position]} onClick = { () => handleSquareClick(position)} isWinningSquare={isWinningSquare}/>
   }
   return (
     <div className="board">

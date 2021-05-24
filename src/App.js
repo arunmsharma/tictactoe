@@ -6,15 +6,17 @@ import StatusMessage from './components/StatusMessage'
 
 import "./styles/root.scss"
 
+const NEW_GAME = [
+  {board: Array(9).fill(null),isXNext: true},
+]
+
 const App = () => {
 
   // const [board,setBoard] = useState(Array(9).fill(null));
 
   // const [isXNext,setIsXNext] = useState(false);
 
-  const [history,setHistory] = useState([
-    {board: Array(9).fill(null),isXNext: true},
-  ]);
+  const [history,setHistory] = useState(NEW_GAME);
 
   // console.log("history",history);
 
@@ -24,7 +26,7 @@ const App = () => {
 
   // whenever a component updates everything inside it updates (rerendered) therefore this winnner will be updated every time
 
-  const winner = calculateWinner(current.board);
+  const {winner,winningSquare} = calculateWinner(current.board);
   // console.log(winner);
 
   
@@ -70,11 +72,16 @@ const App = () => {
     setCurrentMove(move);
   }
 
+  const onNewGame = () => {
+    setHistory(NEW_GAME);
+    setCurrentMove(0);
+  };
   return (
     <div className="app">
       <h1>TIC TAC TOE</h1>
       <StatusMessage winner = {winner} current={current}/>
-      <Board board = {current.board} handleSquareClick= {handleSquareClick}/>
+      <Board board = {current.board} handleSquareClick= {handleSquareClick} winningSquare={winningSquare}/>
+      <button type = "button" onClick = {onNewGame}>Start New Game </button>
       <History history={history} moveTo={moveTo}currentMove={currentMove}/>
     </div>
   );
